@@ -29,7 +29,10 @@ let notas = [
 
 let alunos = ["João", "Maria", "Pedro", "Ana", "Carlos"];
 let notas = [[], [], [], [], []];
+let media = [];
+let desempenho = [];
 let bimestre = 0;
+let soma = 0;
 
 
 function adicinarNotaFunc (aluno) {
@@ -40,19 +43,42 @@ function adicinarNotaFunc (aluno) {
         }
         let nota = Number(prompt(`Adicione a nota do ${bimestre}º bimestre do aluno "${alunos[aluno]}":`));
         validarNotaFunc(nota, aluno);
-
+    }}
+    
+    function validarNotaFunc (nota, aluno) {
+        while (nota < 0 || nota > 10 || isNaN(nota)) {
+            alert(`Erro! A nota deve ser um número entre 0 e 10!`);
+            nota = Number(prompt(`Adicione a nota do ${bimestre}º bimestre do aluno "${alunos[aluno]}":`));
+        }
         notas[aluno].push(nota);
-    }}
+    }
 
-function validarNotaFunc (nota, aluno) {
-    while (nota < 0 || nota > 10 || isNaN(nota)) {
-        alert(`Erro! A nota deve ser um número entre 0 e 10!`);
-        nota = Number(prompt(`Adicione a nota do ${bimestre}º bimestre do aluno "${alunos[aluno]}":`));
-    }}
+function mediaFunc (aluno) {
+    for (let item of notas[aluno]) {
+        soma += item;
+    }
+    soma = soma / 4;
+    media.push(soma);
+}
+function classAlunoFunc () {
+    for (let  item of media) {
+        if (item >= 9) {
+            desempenho.push("Excelente")
+        } else if (item >= 7) {
+            desempenho.push("Bom");
+        } else if (item >= 5) {
+            desempenho.push("Regular");
+        } else {
+            desempenho.push("Insuficiente")
+        }
+    }
+}
 
     //TESTE
 
     adicinarNotaFunc(0);
-    alert(notas.join(", "));
+    alert(notas[0].join(", "));
+    mediaFunc(0)
+    alert(media)
 
 </script>
