@@ -61,6 +61,7 @@ function mediaFunc (aluno) {
     media.push(soma);
 }
 function classAlunoFunc () {
+    if (media.length < 1) {
     for (let  item of media) {
         if (item >= 9) {
             desempenho.push("Excelente")
@@ -70,15 +71,25 @@ function classAlunoFunc () {
             desempenho.push("Regular");
         } else {
             desempenho.push("Insuficiente")
-        }
-    }
+        }}
+    } else if (alunos) {}
 }
+
+    // ENTRADA
+
+    let qualAluno = 0;
+
+    alert(`Bem vindo! Este programa foi feito para gerenciar alunos e notas.`);
+    let navegacao = Number(prompt(`O que deseja fazer?\n\n1 - Adicionar nota;\n2 - Adicionar aluno;\n3 - Remover aluno;\n4 - Ver relatório`));
+    switch (navegacao) {
+        case 1:
+            qualAluno = Number(prompt(`Para qual aluno deseja lançar as notas?\n\n1 - ${alunos[0]}`))
+            break;
+        case 2:
+            alert(`Teste 2`)
+    }
 
     //TESTE
 
-    adicinarNotaFunc(0);
-    alert(notas[0].join(", "));
-    mediaFunc(0)
-    alert(media)
 
 </script>
